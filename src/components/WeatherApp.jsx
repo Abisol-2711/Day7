@@ -20,8 +20,12 @@ function WeatherApp() {
   async function loadInfo(city = "london") {
     try {
       const request = await fetch(
-        `${process.env.REACT_APP_URL}&key=${process.env.REACT_APP_KEY}&q=${city}`
-      );
+        `${process.env.REACT_APP_URL}&key=${process.env.REACT_APP_KEY}&q=${city}`,
+        {
+          method: 'GET',
+          headers: new Headers({ 'Content-type': 'application/json'}),
+          mode: 'cors'
+  });
 
       const json = await request.json();
 
